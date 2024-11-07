@@ -67,6 +67,7 @@ public class MyUI extends UI {
 
         });
 
+
         salarioBrutoContenedor.addComponents(salarioBruto, botonSalarioBruto);
         salarioNetoContenedor.addComponents(salarioNeto, botonSalarioNeto);
 
