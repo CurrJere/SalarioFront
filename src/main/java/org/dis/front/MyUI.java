@@ -29,6 +29,7 @@ public class MyUI extends UI {
         final VerticalLayout layout = new VerticalLayout();
         final HorizontalLayout salarioBruto = new HorizontalLayout();
         final HorizontalLayout salarioNeto = new HorizontalLayout();
+        final VerticalLayaout salarioBrutoContenedor = new VerticalLayaout();
 
         TextField tipo = creaLabel("Tipo de empleado");
         TextField ventaMes = creaLabel("Ventas del mes");
@@ -36,12 +37,22 @@ public class MyUI extends UI {
 
         salarioBruto.addComponents(tipo, ventaMes, horasExtras);
 
-        Button button = new Button("Calcular");
-        button.addClickListener(e -> {
+        Button botonSalarioBruto = new Button("Calcula Salario Bruto");
+        botonSalarioBruto.addClickListener(e -> {
 
         });
-        
-        layout.addComponents(salarioBruto, button);
+
+        Button botonSalarioNeto = new Button("Calcula Salario Neto");
+        botonSalarioNeto.addClickListener(e -> {
+
+        });
+
+
+        TabSheet tabs = new TabSheet();
+        tabs.addTab(salarioBruto).setCaption("Calcula Salario Bruto");
+        tabs.addTab(salarioNeto).setCaption("Calcula Salario Neto");
+
+        layout.addComponents(tabs, button);
         
         setContent(layout);
     }
