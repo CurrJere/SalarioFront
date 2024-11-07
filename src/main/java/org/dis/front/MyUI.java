@@ -71,6 +71,7 @@ public class MyUI extends UI {
         salarioBrutoContenedor.addComponents(salarioBruto, botonSalarioBruto);
         salarioNetoContenedor.addComponents(salarioNeto, botonSalarioNeto);
 
+
         TabSheet tabs = new TabSheet();
         tabs.addTab(salarioBrutoContenedor).setCaption("Calcula Salario Bruto");
         tabs.addTab(salarioNetoContenedor).setCaption("Calcula Salario Neto");
