@@ -7,6 +7,7 @@ import com.vaadin.annotations.VaadinServletConfiguration;
 import com.vaadin.server.VaadinRequest;
 import com.vaadin.server.VaadinServlet;
 import com.vaadin.ui.*;
+import org.dis.back.BRException;
 import org.dis.back.EmpleadoBR;
 
 /**
@@ -46,6 +47,15 @@ public class MyUI extends UI {
             double horasExtraIn = Double.parseDouble(horasExtras.getValue());
 
             EmpleadoBR empleado = new EmpleadoBR();
+
+            try {
+                double resultado = empleado.calculaSalarioBruto(tipoEmpleadoIn, ventasMesIn, horasExtraIn);
+                Label labelSalarioBruto = new Label("El salario bruto obtenido es: "+ resultado +"€");
+                salarioBrutoContenedor.addComponents(labelSalarioBruto);
+            } catch (BRException ex) {
+                Label labelSalarioBruto = new Label(ex.getMessage());
+                salarioBrutoContenedor.addComponent(labelSalarioBruto);
+            }
 
         });
 
