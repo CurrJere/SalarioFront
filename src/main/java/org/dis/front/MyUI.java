@@ -62,6 +62,8 @@ public class MyUI extends UI {
 
         Button botonSalarioNeto = new Button("Calcula Salario Neto");
         botonSalarioNeto.addClickListener(e -> {
+            double SalarioBrutoIn = Double.parseDouble(inputSalarioBruto.getValue());
+            EmpleadoBR empleado = EmpleadoBR();
 
         });
 
