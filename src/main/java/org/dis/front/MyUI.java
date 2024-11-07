@@ -7,6 +7,8 @@ import com.vaadin.annotations.VaadinServletConfiguration;
 import com.vaadin.server.VaadinRequest;
 import com.vaadin.server.VaadinServlet;
 import com.vaadin.ui.*;
+import org.dis.back.BRException;
+import org.dis.back.EmpleadoBR;
 
 /**
  * This UI is the application entry point. A UI may either represent a browser window 
@@ -40,11 +42,28 @@ public class MyUI extends UI {
 
         Button botonSalarioBruto = new Button("Calcula Salario Bruto");
         botonSalarioBruto.addClickListener(e -> {
+            String tipoEmpleadoIn = tipo.getValue();
+            double ventasMesIn = Double.parseDouble(ventaMes.getValue());
+            double horasExtraIn = Double.parseDouble(horasExtras.getValue());
+
+            EmpleadoBR empleado = new EmpleadoBR();
+
+            try {
+                double resultado = empleado.calculaSalarioBruto(tipoEmpleadoIn, ventasMesIn, horasExtraIn);
+                Label labelSalarioBruto = new Label("El salario bruto obtenido es: "+ resultado +"€");
+                salarioBrutoContenedor.addComponents(labelSalarioBruto);
+            } catch (BRException ex) {
+                Label labelSalarioBruto = new Label(ex.getMessage());
+                salarioBrutoContenedor.addComponent(labelSalarioBruto);
+            }
 
         });
 
+
         Button botonSalarioNeto = new Button("Calcula Salario Neto");
         botonSalarioNeto.addClickListener(e -> {
+            double SalarioBrutoIn = Double.parseDouble(inputSalarioBruto.getValue());
+            EmpleadoBR empleado = EmpleadoBR();
 
         });
 
