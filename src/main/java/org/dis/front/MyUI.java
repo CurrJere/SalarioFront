@@ -6,11 +6,7 @@ import com.vaadin.annotations.Theme;
 import com.vaadin.annotations.VaadinServletConfiguration;
 import com.vaadin.server.VaadinRequest;
 import com.vaadin.server.VaadinServlet;
-import com.vaadin.ui.Button;
-import com.vaadin.ui.Label;
-import com.vaadin.ui.TextField;
-import com.vaadin.ui.UI;
-import com.vaadin.ui.VerticalLayout;
+import com.vaadin.ui.*;
 
 /**
  * This UI is the application entry point. A UI may either represent a browser window 
@@ -22,20 +18,30 @@ import com.vaadin.ui.VerticalLayout;
 @Theme("mytheme")
 public class MyUI extends UI {
 
+    private TextField creaLabel(String texto){
+        TextField etiqueta = new TextField();
+        etiqueta.setCaption(texto);
+        return etiqueta;
+    }
+
     @Override
     protected void init(VaadinRequest vaadinRequest) {
         final VerticalLayout layout = new VerticalLayout();
-        
-        final TextField name = new TextField();
-        name.setCaption("Type your name here:");
+        final HorizontalLayout salarioBruto = new HorizontalLayout();
+        final HorizontalLayout salarioNeto = new HorizontalLayout();
 
-        Button button = new Button("Click Me");
+        TextField tipo = creaLabel("Tipo de empleado");
+        TextField ventaMes = creaLabel("Ventas del mes");
+        TextField horasExtras = creaLabel("Horas extra");
+
+        salarioBruto.addComponents(tipo, ventaMes, horasExtras);
+
+        Button button = new Button("Calcular");
         button.addClickListener(e -> {
-            layout.addComponent(new Label("Thanks " + name.getValue() 
-                    + ", it works!"));
+
         });
         
-        layout.addComponents(name, button);
+        layout.addComponents(salarioBruto, button);
         
         setContent(layout);
     }
