@@ -40,6 +40,7 @@ public class MyUI extends UI {
 
         Button botonSalarioBruto = new Button("Calcula Salario Bruto");
         botonSalarioBruto.addClickListener(e -> {
+            
 
         });
 
